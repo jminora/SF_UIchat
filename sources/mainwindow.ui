@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>919</width>
+    <height>569</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="1">
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="commonChatTab">
+         <attribute name="title">
+          <string>Common</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QTextBrowser" name="commonChatBrowser"/>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="privateChatTab">
+         <attribute name="title">
+          <string>Private</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QTextBrowser" name="privateChatBrowser"/>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QListWidget" name="userListWidget">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Your message:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="messageLineEdit">
+        <property name="clearButtonEnabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="sendMessageButton">
+        <property name="text">
+         <string>Send to all</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="privateSendButton">
+        <property name="text">
+         <string>Send private</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>919</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMain_menu">
+    <property name="title">
+     <string>Main menu</string>
+    </property>
+    <addaction name="actionOpen_another_client"/>
+    <addaction name="actionServer_settings"/>
+    <addaction name="separator"/>
+    <addaction name="actionCloseClient"/>
+   </widget>
+   <addaction name="menuMain_menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCloseClient">
+   <property name="text">
+    <string>Close this client</string>
+   </property>
+  </action>
+  <action name="actionOpen_another_client">
+   <property name="text">
+    <string>Open another client</string>
+   </property>
+  </action>
+  <action name="actionServer_settings">
+   <property name="text">
+    <string>Server settings</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
