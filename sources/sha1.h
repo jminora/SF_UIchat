@@ -1,7 +1,15 @@
 ﻿#pragma once
 #include <string>
+#include <cstdint>
+
 using namespace std;
 typedef unsigned int uint;
+
+//аддитивные константы в функции расширения и компресии SHA1
+constexpr uint32_t SHA1_K0 = 0x5A827999u;
+constexpr uint32_t SHA1_K1 = 0x6ED9EBA1u;
+constexpr uint32_t SHA1_K2 = 0x8F1BBCDCu;
+constexpr uint32_t SHA1_K3 = 0xCA62C1D6u;
 
 #define one_block_size_bytes 64 // количество байб в блоке
 #define one_block_size_uints 16 // количество 4байтовых  в блоке

@@ -1,8 +1,8 @@
 #include "Message.h"
-int Message::num = 0;
-int Message::messageCounter = 0;
+std::atomic<int> Message::num{0};
+std::atomic<int> Message::messageCounter{0};
 //сообщение в чат
-Message::Message() : _id(num), _sender(""), _destID(0), _text(""), _timestamp("")
+Message::Message() : _id(num.load()), _sender(""), _destID(0), _text(""), _timestamp("")
 {
 }
 Message::Message(std::string timestamp, std::string writer, std::string text) : _id(++num), _sender(writer), _destID(-1), _text(text), _timestamp(timestamp)

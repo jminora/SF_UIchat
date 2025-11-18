@@ -1,10 +1,11 @@
 #pragma once
 #include <string>
+#include <atomic>
 
 class Message
 {
-	static int num;		//уникальный номер, который получает id
-	static int messageCounter;
+    static std::atomic<int> num;		//уникальный номер, который получает id
+    static std::atomic<int> messageCounter;
 	int _id;
 	std::string _sender;
 	int _destID;

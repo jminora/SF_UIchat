@@ -1,4 +1,5 @@
 ﻿#include "sha1.h"
+#include <stdexcept>
 #include <string>
 #include <cstring>
 uint cycle_shift_left(uint val, int bit_count) {
@@ -41,7 +42,21 @@ Hash sha1(const string &message) {
 
 	// выделяем новый буфер и копируем в него исходный
 	unsigned char* newMessage = new unsigned char[extendedMessageSize];
-	memcpy(newMessage, message.c_str(), msize_bytes);
+
+    // проверка корректности размеров
+    if (msize_bytes > extendedMessageSize)
+    {
+        delete[] newMessage;
+        throw runtime_error("Buffer overflow: source size exceeds destination buffer");
+    }
+
+    if (msize_bytes > message.size())
+    {
+        delete[] newMessage;
+        throw runtime_error("Invalid copy size: requested bytes exceed message length");
+    }
+
+    memcpy(newMessage, message.data(), msize_bytes);
 
 	// первый бит ставим '1', остальные обнуляем
 	newMessage[msize_bytes] = 0x80;
@@ -87,19 +102,19 @@ Hash sha1(const string &message) {
 			// в зависимости от раунда считаем по-разному
 			if (j < 20) {
 				f = (b & c) | ((~b) & d);
-				k = 0x5A827999;
+                k = SHA1_K0;
 			}
 			else if (j < 40) {
 				f = b ^ c ^ d;
-				k = 0x6ED9EBA1;
+                k = SHA1_K1;
 			}
 			else if (j < 60) {
 				f = (b & c) | (b & d) | (c & d);
-				k = 0x8F1BBCDC;
+                k = SHA1_K2;
 			}
 			else {
 				f = b ^ c ^ d;
-				k = 0xCA62C1D6;
+                k = SHA1_K3;
 			}
 
 			// перемешивание
